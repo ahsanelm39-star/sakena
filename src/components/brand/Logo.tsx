@@ -11,7 +11,14 @@ interface LogoProps {
 export const SakinaEmblem: React.FC<{
   className?: string;
   theme?: "dark" | "light";
-}> = ({ className = "w-10 h-10", theme = "dark" }) => {
+  width?: number | string;
+  height?: number | string;
+}> = ({
+  className = "w-10 h-10",
+  theme = "dark",
+  width = 40,
+  height = 40,
+}) => {
   const primaryColor = theme === "light" ? "#F7F6F0" : "#29463F";
   const secondaryColor = theme === "light" ? "#AAB9A7" : "#8FA38B";
   const accentColor = theme === "light" ? "#E4C3BC" : "#C38D7E";
@@ -21,6 +28,16 @@ export const SakinaEmblem: React.FC<{
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      style={{
+        width: typeof width === "number" ? `${width}px` : width,
+        height: typeof height === "number" ? `${height}px` : height,
+        maxWidth: "100%",
+        maxHeight: "100%",
+        display: "block",
+        flexShrink: 0,
+      }}
       className={className}
       aria-hidden="true"
     >
@@ -63,21 +80,27 @@ export const Logo: React.FC<LogoProps> = ({
   const descColor = theme === "light" ? "text-sage-200" : "text-charcoal-500";
   const enColor = theme === "light" ? "text-ivory-200" : "text-forest-600";
 
+  const sizePx = variant === "compact" ? 36 : 44;
+
   const content = (
-    <div className={`inline-flex items-center gap-3.5 select-none ${className}`}>
-      <SakinaEmblem
-        theme={theme}
-        className={
-          variant === "emblem"
-            ? "w-11 h-11"
-            : variant === "compact"
-            ? "w-9 h-9"
-            : "w-11 h-11"
-        }
-      />
+    <div
+      className={`inline-flex items-center gap-3 select-none ${className}`}
+      style={{ minHeight: `${sizePx}px` }}
+    >
+      <div
+        className="flex-shrink-0 flex items-center justify-center"
+        style={{ width: `${sizePx}px`, height: `${sizePx}px` }}
+      >
+        <SakinaEmblem
+          theme={theme}
+          width={sizePx}
+          height={sizePx}
+          className="w-full h-full"
+        />
+      </div>
 
       {variant !== "emblem" && (
-        <div className="flex flex-col text-right">
+        <div className="flex flex-col text-right leading-tight">
           <div className="flex items-baseline gap-2">
             <span
               className={`font-alexandria font-bold tracking-tight text-2xl leading-none ${textColor}`}
@@ -107,7 +130,7 @@ export const Logo: React.FC<LogoProps> = ({
     return (
       <Link
         href="/"
-        className="transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 rounded-lg p-0.5"
+        className="inline-flex transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 rounded-lg p-0.5"
         aria-label="سَكينة - عيادات الصحة النفسية - الصفحة الرئيسية"
       >
         {content}

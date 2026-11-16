@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="py-24 px-4 sm:px-6 lg:px-8 text-center bg-ivory-100 flex items-center justify-center min-h-[60vh]">
       <div className="max-w-md mx-auto space-y-6">
         <div className="w-16 h-16 rounded-3xl bg-sand-200 text-forest-700 flex items-center justify-center mx-auto">
-          <SakinaEmblem className="w-10 h-10" theme="dark" />
+          <SakinaEmblem width={40} height={40} className="w-10 h-10" theme="dark" />
         </div>
 
         <div className="space-y-2">

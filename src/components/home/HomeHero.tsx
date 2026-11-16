@@ -134,7 +134,9 @@ export default function HomeHero() {
                 {/* Floating calm quote badge */}
                 <div className="absolute bottom-6 inset-x-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-elevated border border-sage-200/60 text-right">
                   <div className="flex items-center gap-3">
-                    <SakinaEmblem className="w-9 h-9 flex-shrink-0" theme="dark" />
+                    <div className="w-9 h-9 flex-shrink-0">
+                      <SakinaEmblem width={36} height={36} className="w-full h-full" theme="dark" />
+                    </div>
                     <div>
                       <p className="text-xs font-semibold text-forest-900 font-ibm">
                         «الاستماع الصادق ليس صمتاً، بل هو احتواء كامل للإنسان.»

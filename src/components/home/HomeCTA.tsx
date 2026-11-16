@@ -14,7 +14,7 @@ export default function HomeCTA() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div className="inline-flex justify-center mb-6">
           <div className="w-16 h-16 rounded-3xl bg-forest-800 border border-forest-700 flex items-center justify-center shadow-soft">
-            <SakinaEmblem className="w-10 h-10" theme="light" />
+            <SakinaEmblem width={40} height={40} className="w-10 h-10" theme="light" />
           </div>
         </div>
 
