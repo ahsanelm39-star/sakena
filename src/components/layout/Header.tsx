@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/brand/Logo";
@@ -20,8 +21,13 @@ const NAV_LINKS = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const currentPath = pathname || "/";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,18 +42,18 @@ export default function Header() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when mobile menu is open to prevent background scrolling/disappearing
+  // Lock body scroll and mark root class when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
+      document.documentElement.classList.add("mobile-menu-active");
     } else {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
+      document.documentElement.classList.remove("mobile-menu-active");
     }
     return () => {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
+      document.documentElement.classList.remove("mobile-menu-active");
     };
   }, [mobileMenuOpen]);
 
@@ -139,88 +145,96 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu - Fixed full-screen overlay independent of page scroll */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-ivory-100/98 backdrop-blur-2xl lg:hidden flex flex-col justify-between p-6 overflow-y-auto animate-fade-in"
-          style={{ height: "100dvh" }}
-        >
-          <div>
-            {/* Top Bar inside Drawer */}
-            <div className="flex items-center justify-between pb-4 border-b border-sage-200/80 mb-6">
-              <Logo variant="full" />
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2.5 rounded-2xl bg-white text-forest-800 border border-sage-200/80 hover:bg-sage-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-500 shadow-sm"
-                aria-label="إغلاق القائمة"
-              >
-                <X size={22} />
-              </button>
-            </div>
-
-            <div className="space-y-1.5">
-              <p className="text-[11px] uppercase tracking-widest text-charcoal-500 font-semibold mb-2 px-3">
-                أقسام الموقع
-              </p>
-              {NAV_LINKS.map((link) => {
-                const isActive =
-                  link.href === "/"
-                    ? currentPath === "/"
-                    : currentPath.startsWith(link.href);
-
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors ${
-                      isActive
-                        ? "bg-sage-100 text-forest-800 font-semibold"
-                        : "text-charcoal-800 hover:bg-white active:bg-sage-50"
-                    }`}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    <span>{link.name}</span>
-                    <ArrowLeft
-                      size={18}
-                      className={`text-forest-600 transition-transform ${
-                        isActive ? "opacity-100" : "opacity-40"
-                      }`}
-                    />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-sage-200/80 space-y-4">
-            <Link
-              href="/booking"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2.5 bg-forest-500 text-ivory-100 text-base font-medium py-3.5 px-6 rounded-2xl shadow-sm hover:bg-forest-600 active:scale-[0.98] transition-all"
-            >
-              <Calendar size={18} />
-              <span>طلب حجز موعد جديد</span>
-            </Link>
-
-            <div className="bg-white p-4 rounded-2xl border border-sage-200/60 flex items-center justify-between shadow-soft">
+      {/* Mobile Drawer Menu - Rendered via Portal directly to body to avoid sticky stacking context issues */}
+      {mobileMenuOpen && mounted &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[99999] bg-[#FAF8F5] lg:hidden overflow-y-auto animate-fade-in"
+            style={{
+              height: "100dvh",
+              backgroundColor: "#FAF8F5",
+              overscrollBehavior: "contain",
+            }}
+          >
+            <div className="min-h-full flex flex-col justify-between p-6 pb-14 max-w-lg mx-auto">
               <div>
-                <span className="text-xs text-charcoal-500 block font-ibm">للاستفسارات المباشرة</span>
-                <span className="text-sm font-semibold text-forest-800" dir="ltr">
-                  {clinicConfig.contact.phoneDisplay}
-                </span>
+                {/* Top Bar inside Drawer */}
+                <div className="flex items-center justify-between pb-4 border-b border-sage-200/80 mb-6">
+                  <Logo variant="full" />
+                  <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-2.5 rounded-2xl bg-white text-forest-800 border border-sage-200/80 hover:bg-sage-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-500 shadow-sm"
+                    aria-label="إغلاق القائمة"
+                  >
+                    <X size={22} />
+                  </button>
+                </div>
+
+                <div className="space-y-1.5">
+                  <p className="text-[11px] uppercase tracking-widest text-charcoal-500 font-semibold mb-2 px-3">
+                    أقسام الموقع
+                  </p>
+                  {NAV_LINKS.map((link) => {
+                    const isActive =
+                      link.href === "/"
+                        ? currentPath === "/"
+                        : currentPath.startsWith(link.href);
+
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors ${
+                          isActive
+                            ? "bg-sage-100 text-forest-800 font-semibold"
+                            : "text-charcoal-800 hover:bg-white active:bg-sage-50"
+                        }`}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        <span>{link.name}</span>
+                        <ArrowLeft
+                          size={18}
+                          className={`text-forest-600 transition-transform ${
+                            isActive ? "opacity-100" : "opacity-40"
+                          }`}
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-              <a
-                href={clinicConfig.contact.phoneLink}
-                className="w-10 h-10 rounded-full bg-sage-100 text-forest-700 flex items-center justify-center hover:bg-forest-500 hover:text-white transition-colors"
-                aria-label="اتصال هاتفي"
-              >
-                <Phone size={18} />
-              </a>
+
+              <div className="mt-8 pt-6 border-t border-sage-200/80 space-y-4">
+                <Link
+                  href="/booking"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-center gap-2.5 bg-forest-500 text-ivory-100 text-base font-medium py-3.5 px-6 rounded-2xl shadow-sm hover:bg-forest-600 active:scale-[0.98] transition-all"
+                >
+                  <Calendar size={18} />
+                  <span>طلب حجز موعد جديد</span>
+                </Link>
+
+                <div className="bg-white p-4 rounded-2xl border border-sage-200/60 flex items-center justify-between shadow-soft">
+                  <div>
+                    <span className="text-xs text-charcoal-500 block font-ibm">للاستفسارات المباشرة</span>
+                    <span className="text-sm font-semibold text-forest-800" dir="ltr">
+                      {clinicConfig.contact.phoneDisplay}
+                    </span>
+                  </div>
+                  <a
+                    href={clinicConfig.contact.phoneLink}
+                    className="w-10 h-10 rounded-full bg-sage-100 text-forest-700 flex items-center justify-center hover:bg-forest-500 hover:text-white transition-colors"
+                    aria-label="اتصال هاتفي"
+                  >
+                    <Phone size={18} />
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </header>
   );
 }

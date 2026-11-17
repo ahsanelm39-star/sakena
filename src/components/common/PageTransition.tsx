@@ -49,7 +49,7 @@ export default function PageTransition({
     };
   }, [pathname]);
 
-  // When pathname changes, keep the loading screen for ~850ms then smoothly exit
+  // When pathname changes, keep the loading screen briefly (~400ms) then smoothly exit
   useEffect(() => {
     if (currentPathRef.current !== pathname) {
       currentPathRef.current = pathname;
@@ -57,7 +57,7 @@ export default function PageTransition({
       if (timerRef.current) clearTimeout(timerRef.current);
       timerRef.current = setTimeout(() => {
         setIsTransitioning(false);
-      }, 850);
+      }, 400);
     }
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);

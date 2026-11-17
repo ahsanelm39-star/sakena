@@ -8,9 +8,23 @@ import { clinicConfig } from "@/config/clinic";
 
 export default function MobileStickyCTA() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  // Hide on booking page to avoid redundancy with the booking wizard action bar
-  if (pathname === "/booking") return null;
+  React.useEffect(() => {
+    const checkMenu = () => {
+      setIsMenuOpen(document.documentElement.classList.contains("mobile-menu-active"));
+    };
+    checkMenu();
+    const observer = new MutationObserver(checkMenu);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Hide on booking page or when mobile drawer menu is open
+  if (pathname === "/booking" || isMenuOpen) return null;
 
   return (
     <div

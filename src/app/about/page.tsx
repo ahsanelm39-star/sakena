@@ -93,15 +93,15 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-6 relative">
-            <div className="relative rounded-3xl overflow-hidden h-[380px] w-full shadow-card border-4 border-sand-100">
+            <div className="relative rounded-3xl overflow-hidden h-[440px] sm:h-[480px] w-full shadow-card border-4 border-sand-100 bg-sand-100">
               <Image
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=900"
-                alt="جلسة استشارية دافئة ومهنية في عيادات سكينة"
+                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=1200"
+                alt="مساحة حوار واستشارة دافئة ومريحة في عيادات سكينة"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-top sm:object-[center_12%]"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/25 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
