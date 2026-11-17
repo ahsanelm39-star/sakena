@@ -57,7 +57,7 @@ export default function HomeArticles() {
                       alt={article.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 400px"
-                      className={`object-cover ${article.coverImagePosition || "object-center"} transition-transform duration-500 group-hover:scale-105`}
+                      className={`object-cover transition-transform duration-500 group-hover:scale-105`}
                     />
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-forest-800 text-[11px] font-semibold py-1 px-3 rounded-full">
                       {article.category}

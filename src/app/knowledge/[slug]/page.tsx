@@ -131,7 +131,7 @@ export default function ArticleDetailPage({ params }: PageProps) {
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 800px"
-              className={`object-cover ${article.coverImagePosition || "object-center"}`}
+              className={`object-cover`}
             />
           </div>
         </ScrollReveal>

@@ -212,7 +212,7 @@ export default function KnowledgePage() {
                       alt={article.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 400px"
-                      className={`object-cover ${article.coverImagePosition || "object-center"} group-hover:scale-105 transition-transform duration-500`}
+                      className={`object-cover group-hover:scale-105 transition-transform duration-500`}
                     />
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-forest-800 text-[11px] font-semibold py-1 px-3 rounded-full">
                       {article.category}
