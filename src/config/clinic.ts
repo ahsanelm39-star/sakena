@@ -432,6 +432,7 @@ export const articlesData: Article[] = [
     },
     reviewerPlaceholder: "مراجعة إكلينيكية تمهيدية للتثقيف الصحي (نموذج عرض محتوى)",
     coverImage: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=1200",
+    coverImagePosition: "object-top sm:object-[center_12%]",
     tableOfContents: [
       { id: "common-myths", text: "1. مفاهيم مغلوطة حول توقيت الاستشارة" },
       { id: "subtle-indicators", text: "2. علامات خفية تستوجب الانتباه" },

@@ -124,14 +124,14 @@ export default function ArticleDetailPage({ params }: PageProps) {
 
         {/* Featured Cover Image */}
         <ScrollReveal animation="scale-up" delay={0.1}>
-          <div className="relative h-[320px] sm:h-[440px] w-full arch-top overflow-hidden shadow-soft border-4 border-white">
+          <div className="relative h-[340px] sm:h-[460px] lg:h-[480px] w-full arch-top overflow-hidden shadow-soft border-4 border-white bg-sand-100">
             <Image
               src={article.coverImage}
               alt={article.title}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 800px"
-              className="object-cover"
+              className={`object-cover ${article.coverImagePosition || "object-center"}`}
             />
           </div>
         </ScrollReveal>

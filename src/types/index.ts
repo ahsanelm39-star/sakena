@@ -54,6 +54,7 @@ export interface Article {
   };
   reviewerPlaceholder: string;
   coverImage: string;
+  coverImagePosition?: string;
   tableOfContents: { id: string; text: string }[];
   contentSections: {
     id: string;
