@@ -9,10 +9,10 @@ export const clinicConfig: ClinicConfig = {
     foundedYear: "2024",
   },
   contact: {
-    phoneDisplay: "+966 11 450 8899",
-    phoneLink: "tel:+966114508899",
-    whatsappDisplay: "+966 55 980 1122",
-    whatsappLink: "https://wa.me/966559801122",
+    phoneDisplay: "+966 11 000 0000",
+    phoneLink: "tel:+966110000000",
+    whatsappDisplay: "+966 50 000 0000",
+    whatsappLink: "https://wa.me/966500000000",
     email: "care@sakina-clinic.demo",
     addressDisplay: "طريق الملك فهد، حي النخيل، الرياض، المملكة العربية السعودية",
     city: "الرياض",
@@ -47,7 +47,7 @@ export const specialistsData: Specialist[] = [
     languages: ["العربية (اللغة الأم)", "الإنجليزية (طلاقة مهنية)"],
     formats: ["in-clinic", "telehealth"],
     experienceYearsNote: "خبرة واسعة في الممارسة العيادية والإشراف المهني",
-    image: "https://images.unsplash.com/photo-1594824813634-9273c5b8b9df?auto=format&fit=crop&q=80&w=900",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=900",
     focusAreas: [
       "نوبات الهلع والقلق المعمم",
       "إدارة الضغوط المهنية الشديدة",
@@ -359,7 +359,7 @@ export const articlesData: Article[] = [
     author: {
       name: "د. أمل الخالدي",
       role: "استشارية علم النفس العيادي",
-      image: "https://images.unsplash.com/photo-1594824813634-9273c5b8b9df?auto=format&fit=crop&q=80&w=200",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200",
     },
     reviewerPlaceholder: "مراجعة إكلينيكية تمهيدية للتثقيف الصحي (نموذج عرض محتوى)",
     coverImage: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1200",
@@ -554,10 +554,10 @@ export const articlesData: Article[] = [
     author: {
       name: "د. أمل الخالدي",
       role: "استشارية علم النفس العيادي",
-      image: "https://images.unsplash.com/photo-1594824813634-9273c5b8b9df?auto=format&fit=crop&q=80&w=200",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200",
     },
     reviewerPlaceholder: "مراجعة إكلينيكية تمهيدية للتثقيف الصحي (نموذج عرض محتوى)",
-    coverImage: "https://images.unsplash.com/photo-1511295742362-92c96b124e52?auto=format&fit=crop&q=80&w=1200",
+    coverImage: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&q=80&w=1200",
     tableOfContents: [
       { id: "sleep-brain-link", text: "1. ماذا يفعل الدماغ أثناء النوم العميق؟" },
       { id: "circadian-rhythm", text: "2. الساعة البيولوجية وتنظيم المزاج" },

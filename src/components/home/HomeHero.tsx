@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, ArrowLeft, ShieldCheck, HeartHandshake, Sparkles } from "lucide-react";
 import { SakinaEmblem } from "@/components/brand/Logo";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
 export default function HomeHero() {
   return (
@@ -16,7 +17,7 @@ export default function HomeHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Text Content Column */}
-          <div className="lg:col-span-7 space-y-6 text-right">
+          <ScrollReveal animation="fade-up" className="lg:col-span-7 space-y-6 text-right">
             {/* Tag Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-sage-200/80 shadow-soft">
               <span className="w-2 h-2 rounded-full bg-forest-500 animate-pulse" />
@@ -111,10 +112,10 @@ export default function HomeHero() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Visual Composition Column */}
-          <div className="lg:col-span-5 relative">
+          <ScrollReveal animation="scale-up" delay={0.15} className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Outer architectural arch container */}
               <div className="relative arch-top overflow-hidden bg-forest-800 p-2 shadow-card border-4 border-white">
@@ -154,7 +155,7 @@ export default function HomeHero() {
                 <span>جلسات مرخصة ومبنية على الأدلة</span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

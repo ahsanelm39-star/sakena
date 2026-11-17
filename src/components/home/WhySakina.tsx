@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { ShieldCheck, Ear, Award, MonitorSmartphone, Check } from "lucide-react";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
 const PRINCIPLES = [
   {
@@ -35,7 +38,7 @@ export default function WhySakina() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Visual Side */}
-          <div className="lg:col-span-5 order-2 lg:order-1 relative">
+          <ScrollReveal animation="slide-left" className="lg:col-span-5 order-2 lg:order-1 relative">
             <div className="relative arch-full overflow-hidden max-w-sm mx-auto shadow-card border-4 border-white">
               <div className="relative h-[480px] w-full">
                 <Image
@@ -58,10 +61,10 @@ export default function WhySakina() {
                 </span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Text and Principles Side */}
-          <div className="lg:col-span-7 order-1 lg:order-2 space-y-8 text-right">
+          <ScrollReveal animation="slide-right" delay={0.12} className="lg:col-span-7 order-1 lg:order-2 space-y-8 text-right">
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
                 لماذا سكينة؟
@@ -94,7 +97,7 @@ export default function WhySakina() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

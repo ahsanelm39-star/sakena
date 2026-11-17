@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { SakinaEmblem } from "@/components/brand/Logo";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
 export default function BrandPhilosophy() {
   return (
@@ -9,7 +12,7 @@ export default function BrandPhilosophy() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Header & Narrative */}
-          <div className="lg:col-span-5 space-y-5 text-right">
+          <ScrollReveal animation="fade-up" className="lg:col-span-5 space-y-5 text-right">
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-500 font-ibm block">
               فلسفة العيادة ومنهجنا
             </span>
@@ -34,46 +37,56 @@ export default function BrandPhilosophy() {
                 <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* 3 Core Pillars in Asymmetric Editorial Cards */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div className="bg-white p-6 rounded-3xl border border-sage-200/60 shadow-soft hover:shadow-card transition-shadow text-right space-y-3">
-              <div className="w-10 h-10 rounded-2xl bg-forest-50 text-forest-700 flex items-center justify-center font-bold text-base">
-                01
+          <ScrollReveal
+            animation="stagger-container"
+            staggerDelay={0.12}
+            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-5"
+          >
+            <ScrollReveal animation="stagger-item">
+              <div className="bg-white p-6 rounded-3xl border border-sage-200/60 shadow-soft hover:shadow-card transition-shadow text-right space-y-3">
+                <div className="w-10 h-10 rounded-2xl bg-forest-50 text-forest-700 flex items-center justify-center font-bold text-base">
+                  01
+                </div>
+                <h3 className="font-alexandria font-bold text-forest-900 text-lg">
+                  الاستماع الواعي
+                </h3>
+                <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
+                  مساحة حرة تماماً من التقييم أو الأحكام المسبقة. ننصت لما تقوله وما تعجز الكلمات عن التعبير عنه.
+                </p>
               </div>
-              <h3 className="font-alexandria font-bold text-forest-900 text-lg">
-                الاستماع الواعي
-              </h3>
-              <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
-                مساحة حرة تماماً من التقييم أو الأحكام المسبقة. ننصت لما تقوله وما تعجز الكلمات عن التعبير عنه.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-white p-6 rounded-3xl border border-sage-200/60 shadow-soft hover:shadow-card transition-shadow text-right space-y-3 sm:translate-y-3">
-              <div className="w-10 h-10 rounded-2xl bg-terracotta-50 text-terracotta-600 flex items-center justify-center font-bold text-base">
-                02
+            <ScrollReveal animation="stagger-item">
+              <div className="bg-white p-6 rounded-3xl border border-sage-200/60 shadow-soft hover:shadow-card transition-shadow text-right space-y-3 sm:translate-y-3">
+                <div className="w-10 h-10 rounded-2xl bg-terracotta-50 text-terracotta-600 flex items-center justify-center font-bold text-base">
+                  02
+                </div>
+                <h3 className="font-alexandria font-bold text-forest-900 text-lg">
+                  الأدلة العلمية
+                </h3>
+                <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
+                  نعتمد مدارس علاجية معترفاً بها عالمياً (CBT, ACT) تقدم أدوات ملموسة واستراتيجيات مستدامة.
+                </p>
               </div>
-              <h3 className="font-alexandria font-bold text-forest-900 text-lg">
-                الأدلة العلمية
-              </h3>
-              <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
-                نعتمد مدارس علاجية معترفاً بها عالمياً (CBT, ACT) تقدم أدوات ملموسة واستراتيجيات مستدامة.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-white p-6 rounded-3xl border border-sage-200/60 shadow-soft hover:shadow-card transition-shadow text-right space-y-3 sm:translate-y-6">
-              <div className="w-10 h-10 rounded-2xl bg-sage-50 text-sage-600 flex items-center justify-center font-bold text-base">
-                03
+            <ScrollReveal animation="stagger-item">
+              <div className="bg-white p-6 rounded-3xl border border-sage-200/60 shadow-soft hover:shadow-card transition-shadow text-right space-y-3 sm:translate-y-6">
+                <div className="w-10 h-10 rounded-2xl bg-sage-50 text-sage-600 flex items-center justify-center font-bold text-base">
+                  03
+                </div>
+                <h3 className="font-alexandria font-bold text-forest-900 text-lg">
+                  السرية والكرامة
+                </h3>
+                <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
+                  حماية خصوصيتك التزام مهني وقانوني مطلق، نطبقه في تصميم بيئة العيادة وأنظمتنا الرقمية.
+                </p>
               </div>
-              <h3 className="font-alexandria font-bold text-forest-900 text-lg">
-                السرية والكرامة
-              </h3>
-              <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
-                حماية خصوصيتك التزام مهني وقانوني مطلق، نطبقه في تصميم بيئة العيادة وأنظمتنا الرقمية.
-              </p>
-            </div>
-          </div>
+            </ScrollReveal>
+          </ScrollReveal>
         </div>
       </div>
     </section>

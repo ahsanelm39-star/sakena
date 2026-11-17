@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Search, Send, PhoneCall, HeartHandshake, ArrowLeft } from "lucide-react";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
 const STEPS = [
   {
@@ -34,50 +37,58 @@ export default function CareJourney() {
     <section className="py-20 lg:py-28 bg-ivory-50 border-t border-sage-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
-            خطوات بسيطة وواضحة
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-forest-900 leading-tight">
-            رحلتك معنا نحو استعادة التوازن.
-          </h2>
-          <p className="text-sm sm:text-base text-charcoal-600 font-ibm leading-relaxed">
-            صممنا مسار حجز واستقبال الاستشارات ليكون سلساً، مطمئناً، ومراعياً لأقصى درجات الخصوصية والراحة.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
+              خطوات بسيطة وواضحة
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-forest-900 leading-tight">
+              رحلتك معنا نحو استعادة التوازن.
+            </h2>
+            <p className="text-sm sm:text-base text-charcoal-600 font-ibm leading-relaxed">
+              صممنا مسار حجز واستقبال الاستشارات ليكون سلساً، مطمئناً، ومراعياً لأقصى درجات الخصوصية والراحة.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Steps Grid with Connected Visual Flow */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <ScrollReveal
+          animation="stagger-container"
+          staggerDelay={0.12}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative"
+        >
           {STEPS.map((step, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-7 rounded-3xl border border-sage-200/70 shadow-soft hover:shadow-card transition-all text-right space-y-4 flex flex-col justify-between relative group"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-forest-50 text-forest-700 flex items-center justify-center group-hover:bg-forest-500 group-hover:text-white transition-colors">
-                    {step.icon}
+            <ScrollReveal key={idx} animation="stagger-item">
+              <div
+                className="bg-white p-7 rounded-3xl border border-sage-200/70 shadow-soft hover:shadow-card transition-all text-right space-y-4 flex flex-col justify-between relative group h-full"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-12 rounded-2xl bg-forest-50 text-forest-700 flex items-center justify-center group-hover:bg-forest-500 group-hover:text-white transition-colors">
+                      {step.icon}
+                    </div>
+                    <span className="font-alexandria font-bold text-sage-300 group-hover:text-terracotta-400 transition-colors text-2xl">
+                      {step.step}
+                    </span>
                   </div>
-                  <span className="font-alexandria font-bold text-sage-300 group-hover:text-terracotta-400 transition-colors text-2xl">
-                    {step.step}
-                  </span>
+
+                  <h3 className="font-alexandria font-bold text-forest-900 text-lg">
+                    {step.title}
+                  </h3>
+
+                  <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
+                    {step.description}
+                  </p>
                 </div>
 
-                <h3 className="font-alexandria font-bold text-forest-900 text-lg">
-                  {step.title}
-                </h3>
-
-                <p className="text-xs text-charcoal-600 leading-relaxed font-ibm">
-                  {step.description}
-                </p>
+                <div className="pt-2 border-t border-sand-100 flex items-center justify-between text-[11px] text-sage-500 font-ibm">
+                  <span>خطوة مؤكدة</span>
+                  <span>• سرية تامة</span>
+                </div>
               </div>
-
-              <div className="pt-2 border-t border-sand-100 flex items-center justify-between text-[11px] text-sage-500 font-ibm">
-                <span>خطوة {idx + 1} من 4</span>
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
-        </div>
+        </ScrollReveal>
 
         {/* Bottom Helper */}
         <div className="mt-12 text-center">

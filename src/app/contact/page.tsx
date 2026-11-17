@@ -357,7 +357,7 @@ export default function ContactPage() {
               </p>
               <Link
                 href="/booking"
-                className="inline-flex items-center justify-center gap-2 w-full bg-sage-200 hover:bg-white text-forest-950 font-semibold text-xs py-3 px-5 rounded-xl transition-all"
+                className="inline-flex items-center justify-center gap-2 w-full bg-forest-600 hover:bg-forest-500 text-ivory-100 font-bold text-xs py-3 px-5 rounded-xl border border-forest-400/80 shadow-sm transition-all"
               >
                 <span>الانتقال لبوابة الحجز</span>
               </Link>

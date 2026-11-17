@@ -199,7 +199,7 @@ ${adminNotes ? `- ملاحظات إدارية: ${adminNotes}` : ""}`;
     setTimeout(() => setCopiedSummary(false), 3000);
   };
 
-  const whatsappURL = `https://wa.me/966559801122?text=${encodeURIComponent(summaryText)}`;
+  const whatsappURL = `https://wa.me/966500000000?text=${encodeURIComponent(summaryText)}`;
 
   const resetBooking = () => {
     setIsConfirmed(false);

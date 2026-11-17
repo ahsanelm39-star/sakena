@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { specialistsData } from "@/config/clinic";
+import ScrollReveal from "@/components/common/ScrollReveal";
 import { Calendar, ArrowLeft, Check, Sparkles } from "lucide-react";
 
 export default function FeaturedSpecialist() {
@@ -13,7 +16,7 @@ export default function FeaturedSpecialist() {
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-sage-200/70 shadow-card">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Specialist Portrait with architectural frame */}
-            <div className="lg:col-span-5 relative">
+            <ScrollReveal animation="scale-up" className="lg:col-span-5 relative">
               <div className="relative arch-top overflow-hidden max-w-sm mx-auto shadow-soft border-4 border-sand-100">
                 <div className="relative h-[380px] w-full">
                   <Image
@@ -29,10 +32,10 @@ export default function FeaturedSpecialist() {
                   ملف استشاري توضيحي (Demo)
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Specialist Information */}
-            <div className="lg:col-span-7 space-y-6 text-right">
+            <ScrollReveal animation="slide-right" delay={0.15} className="lg:col-span-7 space-y-6 text-right">
               <div>
                 <span className="text-xs font-semibold text-terracotta-600 uppercase tracking-widest font-ibm block mb-2">
                   أخصائي الشهر المميز
@@ -88,7 +91,7 @@ export default function FeaturedSpecialist() {
                   <ArrowLeft size={15} />
                 </Link>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

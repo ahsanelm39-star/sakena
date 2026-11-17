@@ -36,6 +36,21 @@ export default function Header() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open to prevent background scrolling/disappearing
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
@@ -124,56 +139,73 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu - Fixed full-screen overlay independent of page scroll */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 top-[70px] z-50 bg-ivory-100/98 backdrop-blur-xl lg:hidden flex flex-col justify-between p-6 overflow-y-auto animate-fade-in border-t border-sage-200"
+          className="fixed inset-0 z-50 bg-ivory-100/98 backdrop-blur-2xl lg:hidden flex flex-col justify-between p-6 overflow-y-auto animate-fade-in"
+          style={{ height: "100dvh" }}
         >
-          <div className="space-y-2 pt-2">
-            <p className="text-xs uppercase tracking-widest text-charcoal-500 font-semibold mb-3 px-3">
-              التنقل في الموقع
-            </p>
-            {NAV_LINKS.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? currentPath === "/"
-                  : currentPath.startsWith(link.href);
+          <div>
+            {/* Top Bar inside Drawer */}
+            <div className="flex items-center justify-between pb-4 border-b border-sage-200/80 mb-6">
+              <Logo variant="full" />
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2.5 rounded-2xl bg-white text-forest-800 border border-sage-200/80 hover:bg-sage-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-500 shadow-sm"
+                aria-label="إغلاق القائمة"
+              >
+                <X size={22} />
+              </button>
+            </div>
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors ${
-                    isActive
-                      ? "bg-sage-100 text-forest-800 font-semibold"
-                      : "text-charcoal-800 hover:bg-white"
-                  }`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  <span>{link.name}</span>
-                  <ArrowLeft
-                    size={18}
-                    className={`text-forest-600 transition-transform ${
-                      isActive ? "opacity-100" : "opacity-40"
+            <div className="space-y-1.5">
+              <p className="text-[11px] uppercase tracking-widest text-charcoal-500 font-semibold mb-2 px-3">
+                أقسام الموقع
+              </p>
+              {NAV_LINKS.map((link) => {
+                const isActive =
+                  link.href === "/"
+                    ? currentPath === "/"
+                    : currentPath.startsWith(link.href);
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors ${
+                      isActive
+                        ? "bg-sage-100 text-forest-800 font-semibold"
+                        : "text-charcoal-800 hover:bg-white active:bg-sage-50"
                     }`}
-                  />
-                </Link>
-              );
-            })}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    <span>{link.name}</span>
+                    <ArrowLeft
+                      size={18}
+                      className={`text-forest-600 transition-transform ${
+                        isActive ? "opacity-100" : "opacity-40"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mt-8 pt-6 border-t border-sage-200/80 space-y-4">
             <Link
               href="/booking"
-              className="w-full flex items-center justify-center gap-2.5 bg-forest-500 text-ivory-100 text-base font-medium py-3.5 px-6 rounded-2xl shadow-sm hover:bg-forest-600 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2.5 bg-forest-500 text-ivory-100 text-base font-medium py-3.5 px-6 rounded-2xl shadow-sm hover:bg-forest-600 active:scale-[0.98] transition-all"
             >
               <Calendar size={18} />
               <span>طلب حجز موعد جديد</span>
             </Link>
 
-            <div className="bg-white/80 p-4 rounded-2xl border border-sage-200/60 flex items-center justify-between">
+            <div className="bg-white p-4 rounded-2xl border border-sage-200/60 flex items-center justify-between shadow-soft">
               <div>
-                <span className="text-xs text-charcoal-500 block">للاستفسارات الهاتفية</span>
+                <span className="text-xs text-charcoal-500 block font-ibm">للاستفسارات المباشرة</span>
                 <span className="text-sm font-semibold text-forest-800" dir="ltr">
                   {clinicConfig.contact.phoneDisplay}
                 </span>
