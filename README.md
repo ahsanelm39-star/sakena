@@ -191,8 +191,8 @@ sakina-clinic/
 
 ### 1. استنساخ المستودع (Clone Repository)
 ```bash
-git clone https://github.com/your-username/sakina-clinic.git
-cd sakina-clinic
+https://github.com/ahsanelm39-star/sakena.git
+cd sakina
 ```
 
 ### 2. تثبيت الحزم (Install Dependencies)
