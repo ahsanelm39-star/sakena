@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { articlesData } from "@/config/clinic";
+import ScrollReveal from "@/components/common/ScrollReveal";
 import {
   Search,
   Clock,
@@ -63,90 +64,94 @@ export default function KnowledgePage() {
         <Breadcrumbs items={[{ label: "المكتبة المعرفية" }]} />
 
         {/* Editorial Hero */}
-        <div className="text-right space-y-4 max-w-3xl">
-          <span className="text-xs uppercase tracking-widest font-semibold text-forest-600 font-ibm block">
-            التثقيف والوعي النفسي
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
-            مساحة معرفية لفهم الذات، العلاقات، والمشاعر.
-          </h1>
-          <p className="text-base sm:text-lg text-charcoal-700 font-ibm leading-relaxed">
-            نشاركك مقالات وأدلة إكلينيكية مبسطة تُعينك على تفكيك الضغوط الحياتية
-            واستكشاف آليات التكيف السليمة بلغة عربية رصينة وواعية.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-right space-y-4 max-w-3xl">
+            <span className="text-xs uppercase tracking-widest font-semibold text-forest-600 font-ibm block">
+              التثقيف والوعي النفسي
+            </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
+              مساحة معرفية لفهم الذات، العلاقات، والمشاعر.
+            </h1>
+            <p className="text-base sm:text-lg text-charcoal-700 font-ibm leading-relaxed">
+              نشاركك مقالات وأدلة إكلينيكية مبسطة تُعينك على تفكيك الضغوط الحياتية
+              واستكشاف آليات التكيف السليمة بلغة عربية رصينة وواعية.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Featured Article Banner */}
-        <div className="bg-forest-900 text-ivory-100 rounded-3xl overflow-hidden shadow-card border border-forest-800">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div className="lg:col-span-7 p-8 sm:p-12 space-y-5 text-right">
-              <div className="flex items-center gap-2">
-                <span className="bg-forest-800 text-sage-200 text-xs font-semibold px-3 py-1 rounded-full border border-forest-700">
-                  مقال مميز
-                </span>
-                <span className="text-xs text-sage-300 font-ibm">
-                  {featuredArticle.category} • {featuredArticle.readTime}
-                </span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl font-bold font-alexandria leading-snug">
-                <Link
-                  href={`/knowledge/${featuredArticle.slug}`}
-                  className="hover:text-sage-200 transition-colors"
-                >
-                  {featuredArticle.title}
-                </Link>
-              </h2>
-
-              <p className="text-xs sm:text-sm text-sage-200/90 font-ibm leading-relaxed line-clamp-3">
-                {featuredArticle.excerpt}
-              </p>
-
-              <div className="pt-2 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-9 h-9 rounded-full overflow-hidden border border-forest-700">
-                    <Image
-                      src={featuredArticle.author.image}
-                      alt={featuredArticle.author.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold block font-ibm">
-                      {featuredArticle.author.name}
-                    </span>
-                    <span className="text-[10px] text-sage-300 font-ibm">
-                      {featuredArticle.author.role}
-                    </span>
-                  </div>
+        <ScrollReveal animation="scale-up" delay={0.1}>
+          <div className="bg-forest-900 text-ivory-100 rounded-3xl overflow-hidden shadow-card border border-forest-800">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+              <div className="lg:col-span-7 p-8 sm:p-12 space-y-5 text-right">
+                <div className="flex items-center gap-2">
+                  <span className="bg-forest-800 text-sage-200 text-xs font-semibold px-3 py-1 rounded-full border border-forest-700">
+                    مقال مميز
+                  </span>
+                  <span className="text-xs text-sage-300 font-ibm">
+                    {featuredArticle.category} • {featuredArticle.readTime}
+                  </span>
                 </div>
 
-                <Link
-                  href={`/knowledge/${featuredArticle.slug}`}
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold bg-sage-200 hover:bg-white text-forest-900 px-5 py-2.5 rounded-xl transition-all"
-                >
-                  <span>قراءة المقال كاملاً</span>
-                  <ArrowLeft size={15} />
-                </Link>
+                <h2 className="text-2xl sm:text-3xl font-bold font-alexandria leading-snug">
+                  <Link
+                    href={`/knowledge/${featuredArticle.slug}`}
+                    className="hover:text-sage-200 transition-colors"
+                  >
+                    {featuredArticle.title}
+                  </Link>
+                </h2>
+
+                <p className="text-xs sm:text-sm text-sage-200/90 font-ibm leading-relaxed line-clamp-3">
+                  {featuredArticle.excerpt}
+                </p>
+
+                <div className="pt-2 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-9 h-9 rounded-full overflow-hidden border border-forest-700">
+                      <Image
+                        src={featuredArticle.author.image}
+                        alt={featuredArticle.author.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold block font-ibm">
+                        {featuredArticle.author.name}
+                      </span>
+                      <span className="text-[10px] text-sage-300 font-ibm">
+                        {featuredArticle.author.role}
+                      </span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/knowledge/${featuredArticle.slug}`}
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold bg-sage-200 hover:bg-white text-forest-900 px-5 py-2.5 rounded-xl transition-all"
+                  >
+                    <span>قراءة المقال كاملاً</span>
+                    <ArrowLeft size={15} />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 relative h-64 lg:h-full min-h-[300px]">
+                <Image
+                  src={featuredArticle.coverImage}
+                  alt={featuredArticle.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-forest-900/80 via-transparent to-transparent" />
               </div>
             </div>
-
-            <div className="lg:col-span-5 relative h-64 lg:h-full min-h-[300px]">
-              <Image
-                src={featuredArticle.coverImage}
-                alt={featuredArticle.title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-forest-900/80 via-transparent to-transparent" />
-            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Search & Category Filter Bar */}
-        <div className="space-y-4">
+        <ScrollReveal animation="fade-in" delay={0.12} className="space-y-4">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
             {/* Search Input */}
             <div className="relative max-w-md w-full">
@@ -186,16 +191,20 @@ export default function KnowledgePage() {
               </button>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Articles Grid */}
         {filteredArticles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ScrollReveal
+            animation="stagger-container"
+            staggerDelay={0.08}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {filteredArticles.map((article) => (
-              <article
-                key={article.id}
-                className="bg-white rounded-3xl overflow-hidden border border-sage-200/70 shadow-soft hover:shadow-card transition-all flex flex-col justify-between text-right group"
-              >
+              <ScrollReveal key={article.id} animation="stagger-item">
+                <article
+                  className="bg-white rounded-3xl overflow-hidden border border-sage-200/70 shadow-soft hover:shadow-card transition-all flex flex-col justify-between text-right group h-full"
+                >
                 <div>
                   <div className="relative h-48 w-full overflow-hidden bg-sand-200">
                     <Image
@@ -254,8 +263,9 @@ export default function KnowledgePage() {
                   </Link>
                 </div>
               </article>
-            ))}
-          </div>
+            </ScrollReveal>
+          ))}
+        </ScrollReveal>
         ) : (
           <div className="text-center py-16 bg-white rounded-3xl border border-sage-200 p-8 space-y-3">
             <BookOpen size={36} className="text-sage-400 mx-auto" />

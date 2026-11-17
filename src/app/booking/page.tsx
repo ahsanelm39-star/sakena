@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
+import ScrollReveal from "@/components/common/ScrollReveal";
 import { servicesData, specialistsData, clinicConfig } from "@/config/clinic";
 import {
   Calendar as CalendarIcon,
@@ -220,30 +221,35 @@ ${adminNotes ? `- ملاحظات إدارية: ${adminNotes}` : ""}`;
         <Breadcrumbs items={[{ label: "طلب حجز موعد" }]} />
 
         {/* Header */}
-        <div className="text-right space-y-3">
-          <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
-            بوابة حجز الاستشارات
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-forest-900 leading-tight">
-            احجز موعد استشارتك بكل يسر وخصوصية.
-          </h1>
-          <p className="text-sm sm:text-base text-charcoal-700 font-ibm leading-relaxed">
-            اختر تفضيلات الجلسة والمختص الأنسب، وسيتواصل معك فريق الاستقبال لتأكيد
-            الموعد وترتيب الجلسة.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-right space-y-3">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
+              بوابة حجز الاستشارات
+            </span>
+            <h1 className="text-3xl sm:text-4xl font-bold text-forest-900 leading-tight">
+              احجز موعد استشارتك بكل يسر وخصوصية.
+            </h1>
+            <p className="text-sm sm:text-base text-charcoal-700 font-ibm leading-relaxed">
+              اختر تفضيلات الجلسة والمختص الأنسب، وسيتواصل معك فريق الاستقبال لتأكيد
+              الموعد وترتيب الجلسة.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Demo Mode Notice */}
-        <div className="bg-sand-200/70 p-4 rounded-2xl border border-sand-300 text-xs text-charcoal-700 font-ibm flex items-start gap-3">
-          <Sparkles size={17} className="text-forest-700 flex-shrink-0 mt-0.5" />
-          <p className="leading-relaxed">
-            <strong className="text-forest-900 font-semibold ml-1">تنبيه النموذج التجريبي:</strong>
-            هذا النظام تفاعلي بالكامل لمحاكاة تجربة الحجز الرقمية. يمكنك استكمال الخطوات، وتجربة إرسال الملخص عبر واتساب أو نسخ ملخص الطلب دون حفظ بياناتك في خوادم خارجية.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-in" delay={0.1}>
+          <div className="bg-sand-200/70 p-4 rounded-2xl border border-sand-300 text-xs text-charcoal-700 font-ibm flex items-start gap-3">
+            <Sparkles size={17} className="text-forest-700 flex-shrink-0 mt-0.5" />
+            <p className="leading-relaxed">
+              <strong className="text-forest-900 font-semibold ml-1">تنبيه النموذج التجريبي:</strong>
+              هذا النظام تفاعلي بالكامل لمحاكاة تجربة الحجز الرقمية. يمكنك استكمال الخطوات، وتجربة إرسال الملخص عبر واتساب أو نسخ ملخص الطلب دون حفظ بياناتك في خوادم خارجية.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {!isConfirmed ? (
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-sage-200/70 shadow-card space-y-8">
+          <ScrollReveal animation="fade-up" delay={0.15}>
+            <div className="bg-white rounded-3xl p-6 sm:p-10 border border-sage-200/70 shadow-card space-y-8">
             {/* Step Progress Indicator */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs font-semibold text-charcoal-600 font-ibm">
@@ -821,12 +827,14 @@ ${adminNotes ? `- ملاحظات إدارية: ${adminNotes}` : ""}`;
               )}
             </div>
           </div>
+        </ScrollReveal>
         ) : (
           /* Professional Confirmation State */
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-sage-200/70 shadow-card text-center space-y-6 animate-fade-in">
-            <div className="w-16 h-16 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center mx-auto border-2 border-forest-500">
-              <Check size={32} />
-            </div>
+          <ScrollReveal animation="scale-up">
+            <div className="bg-white rounded-3xl p-8 sm:p-12 border border-sage-200/70 shadow-card text-center space-y-6">
+              <div className="w-16 h-16 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center mx-auto border-2 border-forest-500">
+                <Check size={32} />
+              </div>
 
             <div className="space-y-2 max-w-lg mx-auto">
               <h2 className="font-alexandria font-bold text-2xl sm:text-3xl text-forest-900">
@@ -897,6 +905,7 @@ ${adminNotes ? `- ملاحظات إدارية: ${adminNotes}` : ""}`;
               </button>
             </div>
           </div>
+          </ScrollReveal>
         )}
       </div>
     </div>

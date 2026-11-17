@@ -119,17 +119,17 @@ export default function HomeHero() {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Outer architectural arch container */}
               <div className="relative arch-top overflow-hidden bg-forest-800 p-2 shadow-card border-4 border-white">
-                <div className="relative h-[420px] sm:h-[480px] w-full arch-top overflow-hidden">
+                <div className="relative h-[420px] sm:h-[510px] lg:h-[530px] w-full arch-top overflow-hidden bg-sand-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=900"
+                    src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=1200"
                     alt="مساحة استشارة دافئة ومريحة في عيادات سكينة"
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="object-cover object-center sm:object-[center_22%] lg:object-[center_24%]"
                   />
                   {/* Subtle tint overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-900/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-900/50 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Floating calm quote badge */}

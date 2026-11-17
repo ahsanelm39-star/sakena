@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { servicesData } from "@/config/clinic";
+import ScrollReveal from "@/components/common/ScrollReveal";
 import {
   Clock,
   ArrowLeft,
@@ -29,18 +30,20 @@ export default function ServicesPage() {
         <Breadcrumbs items={[{ label: "خدماتنا" }]} />
 
         {/* Hero Section */}
-        <div className="text-right space-y-4 max-w-3xl">
-          <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
-            دليل الخدمات الإكلينيكية
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
-            خدمات استشارية مصممة خصيصاً لمرافقة احتياجك النفسي.
-          </h1>
-          <p className="text-base sm:text-lg text-charcoal-700 font-ibm leading-relaxed">
-            نقدم في سكينة باقة متكاملة من الاستشارات النفسية والبرامج العلاجية المبنية
-            على الأدلة العلمية، في بيئة تحفظ كرامتك وخصوصيتك بأعلى درجات المهنية.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-right space-y-4 max-w-3xl">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
+              دليل الخدمات الإكلينيكية
+            </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
+              خدمات استشارية مصممة خصيصاً لمرافقة احتياجك النفسي.
+            </h1>
+            <p className="text-base sm:text-lg text-charcoal-700 font-ibm leading-relaxed">
+              نقدم في سكينة باقة متكاملة من الاستشارات النفسية والبرامج العلاجية المبنية
+              على الأدلة العلمية، في بيئة تحفظ كرامتك وخصوصيتك بأعلى درجات المهنية.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Comprehensive Services List */}
         <div className="space-y-8">
@@ -48,11 +51,15 @@ export default function ServicesPage() {
             const isReversed = index % 2 === 1;
 
             return (
-              <div
+              <ScrollReveal
                 key={service.id}
-                id={service.slug}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-sage-200/70 shadow-soft hover:shadow-card transition-all"
+                animation={isReversed ? "slide-left" : "slide-right"}
+                delay={0.05}
               >
+                <div
+                  id={service.slug}
+                  className="bg-white rounded-3xl p-8 sm:p-10 border border-sage-200/70 shadow-soft hover:shadow-card transition-all"
+                >
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
                     isReversed ? "lg:flex-row-reverse" : ""
@@ -145,11 +152,13 @@ export default function ServicesPage() {
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </ScrollReveal>
+          );
+        })}
+      </div>
 
-        {/* Format Comparison Section */}
+      {/* Format Comparison Section */}
+      <ScrollReveal animation="fade-up">
         <div className="bg-sand-100/70 rounded-3xl p-8 sm:p-12 border border-sand-200 text-right space-y-8">
           <div className="max-w-2xl">
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta-600 font-ibm block">
@@ -221,8 +230,10 @@ export default function ServicesPage() {
             </div>
           </div>
         </div>
+      </ScrollReveal>
 
-        {/* Global Assistance CTA */}
+      {/* Global Assistance CTA */}
+      <ScrollReveal animation="scale-up">
         <div className="bg-forest-900 text-ivory-100 rounded-3xl p-8 sm:p-12 text-center space-y-5">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-forest-800 border border-forest-700">
             <HelpCircle size={24} className="text-sage-300" />
@@ -247,6 +258,7 @@ export default function ServicesPage() {
             </Link>
           </div>
         </div>
+      </ScrollReveal>
       </div>
     </div>
   );
