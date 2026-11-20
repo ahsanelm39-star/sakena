@@ -81,8 +81,8 @@ export default function HomeHero() {
             </div>
 
             {/* Trust Badges */}
-            <div className="pt-6 border-t border-sage-200/60 grid grid-cols-3 gap-4 max-w-lg">
-              <div className="flex items-center gap-2.5">
+            <div className="pt-6 border-t border-sage-200/60 grid grid-cols-3 max-sm:grid-cols-2 gap-4 max-w-lg">
+              <div className="flex items-center gap-2.5 max-sm:justify-center">
                 <div className="w-8 h-8 rounded-xl bg-sage-100 flex items-center justify-center text-forest-700 flex-shrink-0">
                   <ShieldCheck size={18} />
                 </div>
@@ -92,7 +92,7 @@ export default function HomeHero() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 max-sm:justify-center">
                 <div className="w-8 h-8 rounded-xl bg-terracotta-100 flex items-center justify-center text-terracotta-600 flex-shrink-0">
                   <HeartHandshake size={18} />
                 </div>
@@ -102,7 +102,7 @@ export default function HomeHero() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 max-sm:hidden">
                 <div className="w-8 h-8 rounded-xl bg-lavender-200/60 flex items-center justify-center text-forest-700 flex-shrink-0">
                   <Sparkles size={18} />
                 </div>
